@@ -22,11 +22,13 @@ object MonoidStudy{
 	import cats.instances.string._
 	val emptyString = Monoid[String].empty
 
+	val stringMonoid = Monoid[String].combine("Hell ", "World")	// Hell World
+
 	import cats.instances.option._
 	val emptyOption = Monoid[Option[Int]].combine(Option(2), Option.empty[Int])	// Some(2)
 
 	import cats.syntax.monad._
-	val combinedOptionFancy = Option(5) |+| Option(7)
+	val combinedOptionFancy = Option(5) |+| Option(7)	// Some(12)
 
 	// TODO1
 	def combineFold[T](list: List[T])(implicit monoid: Monoid[T]): T = 
